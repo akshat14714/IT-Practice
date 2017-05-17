@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style id="students">
+        table,
+        td,
+        th {
+            border-collapse: collapse;
+            border: double;
+        }
+        
+        tbody tr:hover {
+            background-color: green;
+            color: blue;
+        }
+    </style>
+    <script src="index.js"></script>
+</head>
+
+<body>
+    <h1>Student Sheet</h1>
+    <table id="students" border="1">
+        <thead>
+            <tr>
+                <td><b>Name</b></td>
+                <td><b>Marks1</b></td>
+                <td><b>Marks2</b></td>
+                <td><b>Marks3</b></td>
+                <td><b>Marks4</b></td>
+                <td><b>Marks5</b></td>
+            </tr>
+        </thead>
+        <tbody id="students-body">
+        </tbody>
+    </table>
+    <script src="script.js"></script>
+</body>
+
+</html>
