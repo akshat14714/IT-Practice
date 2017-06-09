@@ -93,6 +93,54 @@
             <button type="button" onclick="removeCourse(courseHelper(document.getElementById('courseRemove').value))">REMOVE</button>
         </form>
     </div>
+    <div>
+        <h3>Remove Student</h3>
+        <form id="RemoveStudent">
+            <select id="studentRemove">
+
+            </select>
+            <button type="button" onclick="removeStudent(studentHelper(document.getElementById('studentRemove').value))">REMOVE</button>
+        </form>
+    </div>
+    <div>
+        <h3>View Enrolled Students</h3>
+        <form id="viewEnrolled">
+            <select id="studentEnroll">
+
+            </select>
+            <button type="button" onclick="viewEnrolled(studentHelper(document.getElementById('studentEnroll').value))">DISPLAY</button>
+        </form>
+        <table id="selectedStudents">
+            <thead>
+                <tr>
+                    <td>Roll</td>
+                    <td>Name</td>
+                    <td>Year</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>View Courses Taken</h3>
+        <form id="viewTaken">
+            <select id="courseTaken">
+
+            </select>
+            <button type="button" onclick="viewCoursesTaken(courseHelper(document.getElementById('courseTaken').value))">DISPLAY</button>
+            <table id="selectedCourses">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
 </body>
 
 </html>

@@ -118,6 +118,18 @@ var addNewStudent = function() {
     opt.text = stu.getRoll();
     dropdown.options.add(opt);
 
+    var dropRemove = document.getElementById("studentRemove");
+    var opt = document.createElement("OPTION");
+    opt.value = stu.getRoll();
+    opt.text = stu.getRoll();
+    dropRemove.options.add(opt);
+
+    var dropEnroll = document.getElementById("courseTaken");
+    var opt = document.createElement("OPTION");
+    opt.value = stu.getRoll();
+    opt.text = stu.getRoll();
+    dropEnroll.options.add(opt);
+
     alert("Student Added");
 }
 
@@ -152,6 +164,12 @@ var addNewCourse = function() {
     opt.value = course.getId();
     opt.text = course.getId();
     dropRemove.options.add(opt);
+
+    var dropEnroll = document.getElementById("studentEnroll");
+    var opt = document.createElement("OPTION");
+    opt.value = course.getId();
+    opt.text = course.getId();
+    dropEnroll.options.add(opt);
 
     alert("Course Added");
 }
@@ -245,4 +263,101 @@ var removeCourse = function(Course) {
     allCourses.splice(temp, 1);
 
     alert("Course Removed");
+}
+
+var removeStudent = function(Student) {
+    if (Student === -1) {
+        return;
+    }
+
+    for (var i in allStudents) {
+        if (allStudents[i].getRoll() === Student) {
+            var temp = i;
+        }
+    }
+
+    for (var i in allCourses) {
+        if (allCourses.findStudent(Student.getRoll())) {
+            allCourses[i].dropStudent(Student.getRoll());
+        }
+    }
+
+    var allS = document.getElementById("allStudents");
+    var students = document.getElementById("ddStudents");
+    var dStudents = document.getElementById("dropStudent");
+    var studentR = document.getElementById("studentRemove");
+
+    allS.deleteRow(parseInt(temp) + 1);
+    students.remove(temp);
+    dStudents.remove(temp);
+    studentR.remove(temp);
+    allStudents.splice(temp, 1);
+
+    alert("Student Removed");
+}
+
+var viewEnrolled = function(Course) {
+    if (Course === -1) {
+        return;
+    }
+
+    var i;
+    for (i in allCourses) {
+        if (allCourses[i] === Course) {
+            break;
+        }
+    }
+
+    var stuTable = document.getElementById("selectedStudents");
+
+    while (stuTable.rows.length > 1) {
+        stuTable.deleteRow(stuTable.rows.length - 1);
+    }
+
+    var sStudent = allCourses[i].getStudents();
+
+    for (i in allStudents) {
+        if (sStudent.indexOf(allStudents[i].getRoll()) != -1) {
+            var row = stuTable.insertRow(-1);
+            var roll = row.insertCell(0);
+            var name = row.insertCell(1);
+            var year = row.insertCell(2);
+
+            roll.innerHTML = allStudents[i].getRoll();
+            name.innerHTML = allStudents[i].getName();
+            year.innerHTML = allStudents[i].getYear();
+        }
+    }
+}
+
+var viewCoursesTaken = function(Student) {
+    if (Student === -1) {
+        return;
+    }
+
+    var i;
+    for (i in allStudents) {
+        if (allStudents[i] === Student) {
+            break;
+        }
+    }
+
+    var cTable = document.getElementById("selectedCourses");
+
+    while (cTable.rows.length > 1) {
+        cTable.deleteRow(cTable.rows.length - 1);
+    }
+
+    var sCourse = allStudents[i].getCourseIds();
+
+    for (i in allCourses) {
+        if (sCourse.indexOf(allCourses[i].getId()) != -1) {
+            var row = cTable.insertRow(-1);
+            var id = row.insertCell(0);
+            var name = row.insertCell(1);
+
+            id.innerHTML = allCourses[i].getId();
+            name.innerHTML = allCourses[i].getName();
+        }
+    }
 }
