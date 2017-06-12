@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>ITWS Assignment 6 | [[ROLL NUMBER]]</title>
+</head>
+
+<body>
+    <script src="main.js"></script>
+    <h1>Javascript OOP</h1>
+    <div>
+        <h3>Add New Student</h3>
+        <br>
+        <form id="addNewStudent">
+            <p>Roll No:<input name="roll" type="text"> Name:
+                <input name="name" type="text"> Year:
+                <input name="year" type="text">
+                <button type="button" onclick="addNewStudent();">ADD</button></p>
+        </form>
+    </div>
+    <div>
+        <h3>All Students</h3>
+        <table id="allStudents">
+            <thead>
+                <tr>
+                    <td>Roll</td>
+                    <td>Name</td>
+                    <td>Year</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <br/>
+    <br/>
+    <br/>
+    <div>
+        <h3>Add New Course</h3>
+        <br>
+        <form id="addNewCourse">
+            <p>Course Id:<input name="id" type="text"> Name:
+                <input name="name" type="text">
+                <button type="button" onclick="addNewCourse();">ADD</button></p>
+        </form>
+    </div>
+    <div>
+        <h3>All Courses</h3>
+        <table id="allCourses">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Name</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>Add Student to Course</h3>
+        <form id="AddStudentToCourse">
+            <select id="ddStudents">
+
+                    </select>
+            <select id="ddCourses">
+
+                    </select>
+            <button type="button" onclick="addStudentToCourse(studentHelper(document.getElementById('ddStudents').value), courseHelper(document.getElementById('ddCourses').value))">ADD</button>
+        </form>
+    </div>
+    <div>
+        <h3>Drop Student From Course</h3>
+        <form id="DropStudentFromCourse">
+            <select name="student" id="dropStudent">
+
+                </select>
+            <select name="course" id="dropCourse">
+
+                </select>
+            <button type="button" onclick="dropStudentFromCourse(studentHelper(document.getElementById('dropStudent').value), courseHelper(document.getElementById('dropCourse').value))">DROP</button>
+        </form>
+    </div>
+    <div>
+        <h3>Remove Course</h3>
+        <form id="RemoveCourse">
+            <select id="courseRemove">
+
+            </select>
+            <button type="button" onclick="removeCourse(courseHelper(document.getElementById('courseRemove').value))">REMOVE</button>
+        </form>
+    </div>
+    <div>
+        <h3>Remove Student</h3>
+        <form id="RemoveStudent">
+            <select id="studentRemove">
+
+            </select>
+            <button type="button" onclick="removeStudent(studentHelper(document.getElementById('studentRemove').value))">REMOVE</button>
+        </form>
+    </div>
+    <div>
+        <h3>View Enrolled Students</h3>
+        <form id="viewEnrolled">
+            <select id="studentEnroll">
+
+            </select>
+            <button type="button" onclick="viewEnrolled(studentHelper(document.getElementById('studentEnroll').value))">DISPLAY</button>
+        </form>
+        <table id="selectedStudents">
+            <thead>
+                <tr>
+                    <td>Roll</td>
+                    <td>Name</td>
+                    <td>Year</td>
+                </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+    <div>
+        <h3>View Courses Taken</h3>
+        <form id="viewTaken">
+            <select id="courseTaken">
+
+            </select>
+            <button type="button" onclick="viewCoursesTaken(courseHelper(document.getElementById('courseTaken').value))">DISPLAY</button>
+            <table id="selectedCourses">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Name</td>
+                    </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+            </table>
+</body>
+
+</html>
