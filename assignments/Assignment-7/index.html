@@ -1,146 +1,229 @@
+
 <!DOCTYPE html>
 <html>
-
 <head>
-    <meta charset="utf-8" />
-    <title>ITWS Assignment 6 | [[ROLL NUMBER]]</title>
+        <meta charset="utf-8"/>
+        <title>ITWS Assignment 6 | [20161024]</title>
 </head>
+<script src="./main.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet'  type='text/css'>
+<script>
+        $('table').addClass("table table-striped");
+</script>
+<style>
+        body 
+        {
+                text-align: center;
+                background-image:url("http://www.wallpaperdigit.com/wp-content/uploads/2016/03/cool-wallpaper-CB-Backgrounds-Pictures.jpg");
+                color: cornsilk;
+        }
+        h3 
+        {
+                color: blue; font-family: 'Lobster'; font-weight: bold;
+        }
+        input[type=text]
+        {
+                background-color: black;
+        }
+        .limit 
+        {
+                margin: 0px 10%;
+        }
+        table 
+        {
+                border-collapse: collapse;
+                color: cornsilk;
+        }
+        select
+        {
+                background-color: black;
+                color: cornsilk;
+                width: 100px;
+        }
+</style>
 
-<body>
-    <script src="main.js"></script>
-    <h1>Javascript OOP</h1>
-    <div>
-        <h3>Add New Student</h3>
-        <br>
-        <form id="addNewStudent">
-            <p>Roll No:<input name="roll" type="text"> Name:
-                <input name="name" type="text"> Year:
-                <input name="year" type="text">
-                <button type="button" onclick="addNewStudent();">ADD</button></p>
-        </form>
-    </div>
-    <div>
-        <h3>All Students</h3>
-        <table id="allStudents">
-            <thead>
-                <tr>
-                    <td>Roll</td>
-                    <td>Name</td>
-                    <td>Year</td>
-                </tr>
-            </thead>
-            <tbody>
+<body onload="load()">  
+<!--<script src="main1.js"></script>-->
+        <div class="container">
+                <div class="limit" padding:"10px">
+                <h1 class="text-center" style="font-family:'Georgia, serif'; font-weight: bold; color: blueviolet;">Javascript OOP</h1>
+                </div>
+                <hr>
 
-            </tbody>
-        </table>
-    </div>
-    <br/>
-    <br/>
-    <br/>
-    <div>
-        <h3>Add New Course</h3>
-        <br>
-        <form id="addNewCourse">
-            <p>Course Id:<input name="id" type="text"> Name:
-                <input name="name" type="text">
-                <button type="button" onclick="addNewCourse();">ADD</button></p>
-        </form>
-    </div>
-    <div>
-        <h3>All Courses</h3>
-        <table id="allCourses">
-            <thead>
-                <tr>
-                    <td>Id</td>
-                    <td>Name</td>
-                </tr>
-            </thead>
-            <tbody>
+                <h3 class="text-center">Add New Student</h3>
+                <form id="addNewStudent">
+                        <div class="col-md-5 col-xs-12 col-lg-3 col-lg-offset-4">
+                                <div class="form-group">
+                                        <label for="roll">Roll No&nbsp;</label>
+                                        <input name="roll" type="text" placeholder="201XXXXX" >
+                                        <br />
+                                        <label for="name">Name&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <input name="name" type="text" placeholder="Enter your Name">
+                                        <br />
+                                        <label for="year">Year&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                                        <input name="year" type="text" placeholder="UGX">
+                                </div>
+                        </div>
+                        <br /><br /><br /><br /><br />
+                        <div class="col-md-3 col-xs-12 col-lg-3 col-lg-offset-4">
+                                        <button type="button" onclick="addNewStudent(document.getElementById('addNewStudent').roll.value,document.getElementById('addNewStudent').name.value,document.getElementById('addNewStudent').year.value)" class="btn btn-success" >ADD</button>
+                        </div>
+                </form>
+                <br /><br />
+                <hr>    
+                <div class="limit">
+                        <h3 class="text-center">All Students</h3>
+                </div> 
+                <table id="allStudents" class="table table-striped">
+                       <thead>
+                        <tr>
+                                <td width="33%" style="text-align:center; font-weight:bold;">Roll</td>
+                                <td width="33%" style="text-align:center; font-weight:bold;">Name</td>
+                                <td width="33%" style="text-align:center; font-weight:bold">Year</td>
+                        </tr>
+                        </thead>
+                        <tbody>
+                                
+                        </tbody>
+                </table>
 
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <h3>Add Student to Course</h3>
-        <form id="AddStudentToCourse">
-            <select id="ddStudents">
+                <br /><br />
+                <hr>
 
-                    </select>
-            <select id="ddCourses">
-
-                    </select>
-            <button type="button" onclick="addStudentToCourse(studentHelper(document.getElementById('ddStudents').value), courseHelper(document.getElementById('ddCourses').value))">ADD</button>
-        </form>
-    </div>
-    <div>
-        <h3>Drop Student From Course</h3>
-        <form id="DropStudentFromCourse">
-            <select name="student" id="dropStudent">
-
-                </select>
-            <select name="course" id="dropCourse">
-
-                </select>
-            <button type="button" onclick="dropStudentFromCourse(studentHelper(document.getElementById('dropStudent').value), courseHelper(document.getElementById('dropCourse').value))">DROP</button>
-        </form>
-    </div>
-    <div>
-        <h3>Remove Course</h3>
-        <form id="RemoveCourse">
-            <select id="courseRemove">
-
-            </select>
-            <button type="button" onclick="removeCourse(courseHelper(document.getElementById('courseRemove').value))">REMOVE</button>
-        </form>
-    </div>
-    <div>
-        <h3>Remove Student</h3>
-        <form id="RemoveStudent">
-            <select id="studentRemove">
-
-            </select>
-            <button type="button" onclick="removeStudent(studentHelper(document.getElementById('studentRemove').value))">REMOVE</button>
-        </form>
-    </div>
-    <div>
-        <h3>View Enrolled Students</h3>
-        <form id="viewEnrolled">
-            <select id="studentEnroll">
-
-            </select>
-            <button type="button" onclick="viewEnrolled(studentHelper(document.getElementById('studentEnroll').value))">DISPLAY</button>
-        </form>
-        <table id="selectedStudents">
-            <thead>
-                <tr>
-                    <td>Roll</td>
-                    <td>Name</td>
-                    <td>Year</td>
-                </tr>
-            </thead>
-            <tbody>
-
-            </tbody>
-        </table>
-    </div>
-    <div>
-        <h3>View Courses Taken</h3>
-        <form id="viewTaken">
-            <select id="courseTaken">
-
-            </select>
-            <button type="button" onclick="viewCoursesTaken(courseHelper(document.getElementById('courseTaken').value))">DISPLAY</button>
-            <table id="selectedCourses">
+                <h3 class="text-center">Add New Course</h3>
+                <form id="addNewCourse">
+                         <div class="col-md-5 col-xs-12 col-lg-3 col-lg-offset-4">
+                                <div class="form-group">
+                                        <table>
+                                                <tr>
+                                                   <td><label for="id">Course Id</label></td>
+                                                   <td><input name="id" type="text" placeholder="Enter the Course Id"></td>
+                                                </tr>
+                                                <tr>   
+                                                   <td><label for="name">Name&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></td>
+                                                   <td><input name="name" type="text" placeholder="Enter the Course Name"></td>
+                                                </tr>
+                                        </table>
+                                </div>
+                        </div>
+                        <br /><br /><br /><br />
+                        <div class="col-md-3 col-xs-12 col-lg-3 col-lg-offset-4">
+                                <button type="button" onclick="addNewCourse(document.getElementById('addNewCourse').id.value,document.getElementById('addNewCourse').name.value)" class="btn btn-success">ADD</button>
+                        </div>
+                </form>
+                <br /><br />
+                <hr>
+                <div class="limit">
+                <h3 class="text-center">All Courses</h3>
+                </div> 
+                <table id="allCourses" class="table table-striped">
                 <thead>
-                    <tr>
-                        <td>Id</td>
-                        <td>Name</td>
-                    </tr>
+                <tr>
+                        <td width="50%" style="text-align:center; font-weight:bold;">Id</td>
+                        <td width="50%" style="text-align:cnter; font-weight:bold;">Name</td>
+                </tr>
+                </thead>
+                <tbody>
+       
+                </tbody>
+        </table>
+        <br />
+        <hr>
+
+        <h3>Add/Drop Courses</h3>
+        <form id="AddStudentToCourse">
+                <select id="ddStudents">
+
+                </select>
+                <select id="ddCourses">
+
+                </select>
+                <button type="button" onclick="addStudentToCourse(document.getElementById('ddStudents').value,document.getElementById('ddCourses').value)" class="btn btn-primary">ADD</button>
+        </form>
+        <br />
+        <br />
+        <form id="DropStudentFromCourse">
+                <select id="dropStudent">
+
+                </select>
+                <select id="dropCourse">
+
+                </select>
+                <button type="button" onclick="dropStudentFromCourse(document.getElementById('dropStudent').value,document.getElementById('dropCourse').value)" class="btn btn-primary">DROP</button>
+        </form>   
+        <br />
+        <hr>
+
+        <div class="limit">
+        <h3>Remove Course</h3>
+        </div>
+        <form id="RemoveCourse">
+                <select id="courseRemove">
+
+                </select>
+                <button type="button" onclick="removeCourse(document.getElementById('courseRemove').value)" class="btn btn-danger">REMOVE</button>
+        </form>    
+        <br />
+        <hr>
+
+        <h3>RemoveStudent</h3>
+        <form id="RemoveStudent">
+                <select id="studentRemove">
+
+                </select>
+                <button type="button" onclick="removeStudent(document.getElementById('studentRemove').value)" class="btn btn-danger">REMOVE</button>
+        </form>
+        <br />
+        <hr>
+
+        <div class="limit">
+        <h3>Display Students</h3>
+        </div>
+        <form id="DisplayStudents">
+                <select id="displayStudents">
+
+                </select>
+                <button type="button" onclick="viewEnrolled(document.getElementById('displayStudents').value)" class="btn btn-info">DISPLAY</button>
+        </form>
+        <table id="selectedStudents" class="table table-striped">
+                <thead>
+                        <tr>
+                                <td width="33%" style="text-align:center; font-weight:bold;">Roll No.</td>
+                                <td width="33%" style="text-align:center; font-weight:bold;">Name</td>
+                                <td width="33%" style="text-align:center; font-weight:bold;">Year</td>
+                        </tr>
                 </thead>
                 <tbody>
 
                 </tbody>
-            </table>
-</body>
+        </table>
+        <br />
+        <hr>
 
+        <h3>Display Courses</h3>
+        <form id="DisplayCourses">
+                <select id="displayCourses">
+
+                </select>
+                <button type="button" onclick="viewCoursesTaken(document.getElementById('displayCourses').value)" class="btn btn-info">DISPLAY</button>
+        </form>
+        <table id="selectedCourses" class="table table-striped">
+                <thead>
+                        <tr>
+                                <td width="50%" style="text-align:center; font-weight:bold;">Id</td>
+                                <td width="50%" style="text-align:center; font-weight:bold;">Name</td>
+                        </tr>
+                </thead>
+                <tbody>
+
+                </tbody>
+        </table>
+        <br />
+        <hr>
+
+</body>
 </html>
